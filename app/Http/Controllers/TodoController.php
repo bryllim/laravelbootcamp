@@ -19,6 +19,6 @@ class TodoController extends Controller
         $todo->status = "pending";
         $todo->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', "Added new task successfully!");
     }
 }
