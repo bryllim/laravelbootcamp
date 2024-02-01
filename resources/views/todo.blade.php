@@ -13,29 +13,20 @@
     <main class="container m-5 p-5 border rounded">
         <h1 class="fw-bold">To-do List</h1>
         <hr>
-        <form action="#">
-            <input type="text" class="form-control">
-            <button class="btn btn-primary btn-sm mt-3">Add</button>
+        <form method="POST" action="{{ route('addtodo') }}">
+        @csrf
+            <input type="text" class="form-control" name="content" placeholder="Write something here...">
+            <button type="submit" class="btn btn-primary btn-sm mt-3">Add</button>
         </form>
         <hr>
+        @foreach($todos as $todo)
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
-                Default checkbox
+               {{ $todo->content }}
             </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Default checkbox
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Default checkbox
-            </label>
-        </div>
+        @endforeach
     </main>
 </body>
 

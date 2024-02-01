@@ -8,12 +8,17 @@ use App\Models\Todo;
 
 class TodoController extends Controller
 {
-    public function create(){
+
+    public function display(){
+        return view('todo')->with('todos', Todo::all());
+    }
+
+    public function create(Request $request){
         $todo = new Todo();
-        $todo->content = "Test content";
+        $todo->content = $request->content;
         $todo->status = "pending";
         $todo->save();
 
-        return "Added a new todo!";
+        return redirect()->route('home');
     }
 }
