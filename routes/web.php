@@ -15,7 +15,9 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-Route::get('/', [TodoController::class, 'display'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Todo Routes
 Route::post('/addtodo', [TodoController::class, 'create'])->name('addtodo');
+Auth::routes();
